@@ -1,0 +1,227 @@
+{% load categories %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="{% static 'bulma.css' %}">
+    <link rel="stylesheet" href="{% static 'bulma.min.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.3/dist/css/bulma-carousel.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+</head>
+<body>
+<header class="section1 has-background-white is-light ">
+    <div class="container_nav">
+        <div class="navbar">
+            <figure class="navbar-item">
+                <a href="{% url 'store:home' %}">
+                    <img class="imglogosize" src="{% static 'uploads/logo.png' %}" alt="LOGO">
+                </a>
+            </figure>
+            <div class="navbar-end is-vcentered pt-3">
+                <a class="button is-rounded is-light has-text-weight-bold js-modal-trigger date"
+                   data-target="modal-js-example">
+                    Заказать звонок
+                </a>
+                <a href="tel:+8 499 391-84-49" class="is-size-4 ml-5  has-text-weight-bold textcolor">8 499
+                    391-84-49</a>
+            </div>
+
+        </div>
+        <div class="navbar-menu pb-3 is-vcentered">
+            <div class="navbar-start is-size-6 is-vcentered ">
+                {% if user.is_authenticated %}
+                    {% categories %}
+                    <a href="{% url 'store:combo' %}" class="level has-text-black mx-3">
+                        <span class="has-text-weight-bold">Комбо</span>
+                    </a>
+                    <a href="{% url 'store:sales' %}" class="level has-text-black mx-3">
+                        <span class="has-text-weight-bold">Акции</span>
+                    </a>
+                    <a href="{% url 'store:contact' %}" class="level has-text-black mx-3 "><span
+                            class="has-text-weight-bold">Контакты</span></a>
+                    <span class="navbar-item mb-5">
+                        <a href="{% url 'users:profile_detail' %}" class="level has-text-black mx-3"><span
+                                class="has-text-weight-bold">Профиль</span></a>
+                    </span>
+                    <span class="pb-5">
+                        <a href="{% url 'store:cart' %}" class="button is-rounded mx-3 color_button btn_color">
+                            <div class="text has-text-weight-bold">Kорзина | {{ item.quantity }}</div>
+                        </a>
+                    </span>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <div id="modal-js-example" class="modal">
+        <div class="modal-background"></div>
+        <div class="modal-content is-fullwidth">
+            <div class="box">
+                <form method="get" class="form" action="{% url 'store:get_contact_url' %}">
+                    <h1 class="title has-text-centered has-text-weight-normal">Заказать обратный звонок</h1>
+                    <div class="field has-text-centered">
+                        <label class="label has-text-weight-medium">Имя</label>
+                        <div class="control">
+                            <input type="text" class="inpt" name="name">
+                        </div>
+                    </div>
+                    <div class="field has-text-centered">
+                        <label class="label has-text-weight-medium">E-mail</label>
+                        <div class="control">
+                            <input type="text" class="inpt" name="email">
+                        </div>
+                    </div>
+                    <div class="field has-text-centered">
+                        <label class="label has-text-weight-medium">Телефон</label>
+                        <div class="control">
+                            <input type="text" class="inpt"  name="telephone">
+                        </div>
+                    </div>
+                    <div class="has-text-centered">
+                        <button class="btn_submit_form is-centered">Отправить</button>
+                    </div>
+                    {% if is_succes %}
+                        <h1 class="title">Отлично! Мы скоро вам перезвоним.</h1>
+                        <a href="{% url 'store:home' %}" class="btn__centered">Закрыть</a>
+                    {% endif %}
+                </form>
+            </div>
+        </div>
+        <button class="modal-close is-large" aria-label="close"></button>
+    </div>
+</header>
+
+
+{% block sale %}
+{% endblock %}
+
+{% block content %}
+{% endblock %}
+
+{% block auth %}
+{% endblock %}
+
+
+<section class="section">
+    <div class="container_nav">
+        <footer class="columns">
+            <div class="column is-6">
+                <figure>
+                    <img src="{% static 'uploads/logo.png' %}" alt="">
+                </figure>
+                <div class="level-item is-justify-content-left navbar-start">
+                    <div class="navbar-item has-text-weight-bold pl-0">Калорийность и состав</div>
+                    <div class="navbar-item has-text-weight-bold pl-0 ml-6">Правовая информация</div>
+                </div>
+                <p class="navbar-item has-text-weight-bold pl-0">Мы в соцсетях</p>
+                <br><br>
+                <div class="columns">
+                    <div class="column">
+                        <p class="is-dark pl-0">YouTube</p>
+                        <p class="is-dark pl-0">Instagram</p>
+                    </div>
+                    <div class="column is-centern">
+                        <p class="is-dark pl-0 ">Facebook</p>
+                        <p class="is-dark pl-0 ">ВКонтакте</p>
+                    </div>
+                    <div class="column">
+                        <p>Москва ул. Проспект <br>Вернадского 86В</p>
+                    </div>
+                </div>
+                <br><br>
+                <h1 class="is-dark level">YaBao Все праав защищены © 2021</h1>
+            </div>
+            <div class="column is-7 ">
+                <p class="has-text-weight-bold pl-4">Остались вопросы? А мы всегда на связи:</p><br><br>
+                <div class="button buttonsize  ml-3"><a href="#"><img class="imgsize"
+                                                                      src="{% static 'uploads/viber.svg' %}" alt=""></a>
+                </div>
+                <div class="button buttonsize ml-3"><a href="#"><img class="imgsize"
+                                                                     src="{% static 'uploads/skype.svg' %}" alt=""></a>
+                </div>
+                <div class="button buttonsize  ml-3"><a href="#"><img class="imgsize"
+                                                                      src="{% static 'uploads/message.svg' %}"
+                                                                      alt=""></a></div>
+                <div class="button buttonsize  ml-3"><a href="#"><img class="imgsize"
+                                                                      src="{% static 'uploads/telegram.svg' %}" alt=""></a>
+                </div>
+                <br><br>
+                <div class="button buttonsize  ml-3"><a href="#">
+                    <img class="imgsize" src="{% static 'uploads/facebook.svg' %}" alt=""></a></div>
+                <div class="button buttonsize  ml-3"><a href="#"><img class="imgsize"
+                                                                      src="{% static 'uploads/vk.svg' %}" alt=""></a>
+                </div>
+                <div class="button buttonradius1 ml-2 has-text-weight-bold">Написать нам</div>
+                <br><br><br>
+                <p class="is-size-4 has-text-warning has-text-weight-bold ml-4">8 499 391-84-49</p>
+                <br>
+                <button class="button is-rounded is-light has-text-weight-bold ml-4 ">
+                    Заказать звонок
+                </button>
+            </div>
+        </footer>
+    </div>
+    <img class="imagedown" src="{% static 'uploads/niz-foto.png' %}" alt="">
+</section>
+<script src="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.3/dist/js/bulma-carousel.min.js"></script>
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+<script>
+    bulmaCarousel.attach('#carousel-demo', {
+        slidesToScroll: 1,
+        slidesToShow: 2,
+        infinite: true,
+    });
+</script>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // Functions to open and close a modal
+        function openModal($el) {
+            $el.classList.add('is-active');
+        }
+
+        function closeModal($el) {
+            $el.classList.remove('is-active');
+        }
+
+        function closeAllModals() {
+            (document.querySelectorAll('.modal') || []).forEach(($modal) => {
+                closeModal($modal);
+            });
+        }
+
+        // Add a click event on buttons to open a specific modal
+        (document.querySelectorAll('.js-modal-trigger') || []).forEach(($trigger) => {
+            const modal = $trigger.dataset.target;
+            const $target = document.getElementById(modal);
+
+            $trigger.addEventListener('click', () => {
+                openModal($target);
+            });
+        });
+
+        // Add a click event on various child elements to close the parent modal
+        (document.querySelectorAll('.modal-background, .modal-close, .modal-card-head .delete, .modal-card-foot .button') || []).forEach(($close) => {
+            const $target = $close.closest('.modal');
+
+            $close.addEventListener('click', () => {
+                closeModal($target);
+            });
+        });
+
+        // Add a keyboard event to close all modals
+        document.addEventListener('keydown', (event) => {
+            const e = event || window.event;
+
+            if (e.keyCode === 27) { // Escape key
+                closeAllModals();
+            }
+        });
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+{% extends 'base_layout.html' %}
+{% load static %}
+
+{% block content %}
+    <section class="section is-medium">
+    <div class="container_nav">
+        <div class="columns">
+            <div class="column pl-6 is-vcentered">
+                <iframe class="is-rounded mapsrounded"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2245.011311922709!2d37.65671028365306!3d55.75830570002984!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46b54a8dd1a8f359%3A0x562114fc3541cfb1!2z0JrRg9GA0YHQutCw0Y8!5e0!3m2!1sru!2s!4v1651566100376!5m2!1sru!2s"
+                        width="1000" height="350" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+        <p class="is-size-1 textcolor pl-6 has-text-weight-bold ">8 800 333-36-62</p>
+        <p class="is-size-1 pl-6 has-text-weight-bold">ул. Проспект Вернадского 86В</p>
+        <p class=" pl-6 has-text-weight-bold">Доставка и самовывоз 10:00 — 23:00</p>
+        </div>
+    </section>
+
+    <img class="imgright1 image" src="{% static 'uploads/img1.png' %}" alt="">
+
+{% endblock %}

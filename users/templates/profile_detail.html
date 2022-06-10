@@ -1,0 +1,31 @@
+{% extends 'base_layout.html' %}
+{% load static %}
+
+
+
+{% block content %}<br><br><br><br>
+    <section class="section s_dd">
+        <div class="container has-text-centered">
+            <div class="columns is-centered">
+                <div class="column is-3">
+                    <div class="box">
+                        <h1 class="is-3 title">Edit profile</h1>
+                        <a href="{% url 'users:edit_profile' %}" class="btn">Change</a>
+                    </div>
+                </div>
+                <div class="column is-3">
+                    <div class="box">
+                        <h1 class="title is-3">Reset password</h1>
+                        <a href="{% url 'users:reset_password' %}" class="btn">Change</a>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="is-centered">
+                    <a href="{% url 'users:sign_out' %}" class="btn_sign_out">
+                        Sign out
+                    </a>
+            </div>
+        </div>
+    </section>
+{% endblock %}

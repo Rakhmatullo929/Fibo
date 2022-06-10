@@ -1,0 +1,18 @@
+{% extends 'base_layout.html' %}
+{% load static %}
+
+{% block content %}
+    <section class="section is-large container_nav">
+        <div>
+            <img class="image-down-left-supy" src="{% static 'uploads/img-14.png' %}" alt="">
+            <h1 class="is-3 title has-text-weight-bold textcolor">Combo</h1>
+            <p class="is-6 subtitle mt-3">В этой категории нет товаров.</p>
+            <button class="button color_button is-rounded is-size-5 ">
+                <div class=""><a href="{% url 'store:home' %}"
+                                 class="has-text-white is-size-6 has-text-weight-bold">Продолжить</a>
+                </div>
+            </button>
+            <img class="image-down-right-supy" src="{% static 'uploads/img1-large.png' %}" alt="">
+        </div>
+    </section>
+{% endblock %}

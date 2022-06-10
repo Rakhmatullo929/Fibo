@@ -1,0 +1,205 @@
+{% extends 'base_layout.html' %}
+{% load static %}
+{% load categories %}
+
+{% block content %}
+    <div class="section is-medium">
+        {% block slider %}
+            <div class="container-slide mb-6">
+                <div id="carousel-demo" class="carousel">
+                    {% for slide in slides %}
+                        <div class="item-1">
+                            <img class="slider-img" src="{{ slide.image.url }}" alt="">
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endblock %}
+        <div class="imageleft">
+            <img src="{% static 'uploads/img-14.png' %}" alt="">
+        </div>
+
+        {#  Cards mini  #}
+        <div class="container_nav">
+            <h1 class="is-size-3 has-text-weight-bold title">Новинки</h1>
+            <div class="columns is-justify-content-center">
+                <a href="{% url 'store:home' %}" class="column">
+                    <div class="box ">
+                        <div class="media is-centered">
+                            <figure class="media-left">
+                                <p class="image is-64x64">
+                                    <img src="{% static 'uploads/small-pizza1.png' %}" alt="pizza"></p>
+                            </figure>
+                            <div class="media-content">
+                                <div class="content">
+                                    <div class="subtitle has-text-weight-bold">Карбонара <br> <span
+                                            class="has-text-warning ">от 120 ₽</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+
+                <div class="column">
+                    <div class="box pl-3">
+                        <div class="media ">
+                            <figure class="media-left">
+                                <p class="image is-64x64">
+                                    <img src="{% static 'uploads/small-pizza1.png' %}" alt="pizza"></p>
+                            </figure>
+                            <div class="media-content">
+                                <div class="content">
+                                    <div class="subtitle has-text-weight-bold">Карбонара <br> <span
+                                            class="has-text-warning ">от 120 ₽</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="column">
+                    <div class="box pl-3">
+                        <div class="media ">
+                            <figure class="media-left">
+                                <p class="image is-64x64">
+                                    <img src="{% static 'uploads/small-pizza1.png' %}" alt="pizza"></p>
+                            </figure>
+                            <div class="media-content">
+                                <div class="content">
+                                    <div class="subtitle has-text-weight-bold">Карбонара <br> <span
+                                            class="has-text-warning ">от 120 ₽</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="column">
+                    <div class="box pl-3">
+                        <div class="media ">
+                            <figure class="media-left">
+                                <p class="image is-64x64">
+                                    <img src="{% static 'uploads/small-pizza1.png' %}" alt="pizza"></p>
+                            </figure>
+                            <div class="media-content">
+                                <div class="content">
+                                    <div class="subtitle has-text-weight-bold">Карбонара <br> <span
+                                            class="has-text-warning ">от 120 ₽</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br><br>
+
+        {# Card product #}
+        <div class="container_nav ">
+            <h1 class="has-text-weight-bold title has-text-warning">{{ category }}</h1>
+            <div class="columns is-multiline p-0">
+                {% for product in products %}
+                    <div class="column is-3">
+                        <img src="{{ product.image.url }}" alt="">
+                        <h2 class="title is-3 has-text-weight-bold">{{ product.title }}</h2>
+                        <p class="subtitle is-6 mt-0">{{ product.description }}</p>
+                        <div class="columns is-vcentered is-justify-content-space-between">
+                            <h1 class="ml-4 is-size-4 has-text-weight-bold">от {{ product.price }} ₽</h1>
+                            <a href="{% url 'store:home' %}"
+                               class="button is-rounded s_dd has-text-weight-bold mr-3">В корзину
+                            </a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <br>
+    <section class="section">
+        <div class="container_nav">
+            <div class="h3_m has-text-weight-bold">Наши<span class="textcolor"> акции</span></div>
+            <div class="tile is-ancestor m-6">
+                <div class="tile is-parent">
+                    <img src="{% static 'uploads/image-26-big.jpg' %}" alt="">
+                </div>
+                <div class="tile">
+                    <div class="tile is-parent is-vertical">
+                        <div class="tile is-child">
+                            <img src="{% static 'uploads/small.jpg' %}" alt="">
+                        </div>
+                        <div class="tile is-child">
+                            <img src="{% static 'uploads/small.jpg' %}" alt="">
+                        </div>
+                    </div>
+                    <div class="tile is-parent is-vertical">
+                        <div class="tile is-child">
+                            <img src="{% static 'uploads/small.jpg' %}" alt="">
+                        </div>
+                        <div class="tile is-child">
+                            <img src="{% static 'uploads/small.jpg' %}" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <img class="image-down-right" src="{% static 'uploads/img1-large.png' %}" alt="">
+    </section>
+
+    <section class="section has-background-grey-lighter">
+        <div class="container_nav">
+
+            <h1 class="title has-text-centered">Оплата и доставка</h1>
+            <div class="columns is-vcentered is-centered is-1">
+                <div class="column">
+                    <div class="boxrounded">
+                        <img class="card-icon is-vcentered" src="{% static 'uploads/image-15.png' %}"
+                             alt="">
+                        <div class="subtitle is-6 mt-3 has-text-centered">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit
+                        </div>
+                    </div>
+                </div>
+
+                <div class="column">
+                    <div class="boxrounded">
+                        <img class="card-icon is-vcentered" src="{% static 'uploads/image-15-1.png' %}"
+                             alt="">
+                        <div class="subtitle is-6 mt-3 has-text-centered">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit
+                        </div>
+                    </div>
+                </div>
+
+                <div class="column">
+                    <div class="boxrounded">
+                        <img class="card-icon" src="{% static 'uploads/image-15-2.png' %}" alt="">
+                        <div class="subtitle is-6 mt-3 has-text-centered">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit
+                        </div>
+                    </div>
+                </div>
+
+                <div class="column">
+                    <div class="boxrounded">
+                        <img class="card-icon" src="{% static 'uploads/image-15-3.png' %}" alt="">
+                        <div class="subtitle is-6 mt-3 has-text-centered">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="columns">
+            <div class="column">
+                <div class="mapsrounded2 is-rounded">
+                    <iframe class="mapsrounded2 is-vcentered ml-5 mr-5"
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2245.011311922709!2d37.65671028365306!3d55.75830570002984!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46b54a8dd1a8f359%3A0x562114fc3541cfb1!2z0JrRg9GA0YHQutCw0Y8!5e0!3m2!1sru!2s!4v1651566100376!5m2!1sru!2s"
+                            width="1290" height="350" style="" allowfullscreen="" loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

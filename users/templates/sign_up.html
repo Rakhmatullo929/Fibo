@@ -1,0 +1,29 @@
+{% extends 'base_layout.html' %}
+
+{% block auth %}
+    <div class="columns s_dd is-centered section is-medium has-background-warning-light" style="margin-top: 6%">
+        <div class="column is-4">
+            <div class="box">
+                <form class="form  has-text-centered" method="post">
+                    <h1 class="title is-size-2 has-text-centered">Sign up</h1>
+                    {% csrf_token %}
+                    {% for field in form %}
+                        <div class="field">
+                            <label for="{{ field.id_for_label }}" class="label">{{ field.label }}</label>
+                            {{ field }}
+                        </div>
+                    {% endfor %}
+                    <button type="submit" class="button s_dd is-fullwidth">
+                        Submit
+                    </button>
+                    <p class="content mt-3">
+                        Already have an account?
+                        <span>
+                           <a class="color_a" href="{% url 'users:sign_in' %}">Sign in here</a>
+                       </span>
+                    </p>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

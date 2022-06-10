@@ -1,0 +1,11 @@
+<div class="level is-vcentered">
+    {% for category in categories %}
+        <h1 class="has-text-weight-bold title has-text-warning">{{ products.title }}</h1>
+        <div class="level-item mx-3 ">
+            <a href="{% url 'store:home' %}?category={{ category.pk }}"
+               class="is-horizontal has-text-black has-text-weight-semibold is-size-6">
+                {{ category }}
+            </a>
+        </div>
+    {% endfor %}
+</div>
