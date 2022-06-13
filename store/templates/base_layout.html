@@ -78,7 +78,7 @@
                     <div class="field has-text-centered">
                         <label class="label has-text-weight-medium">Телефон</label>
                         <div class="control">
-                            <input type="text" class="inpt"  name="telephone">
+                            <input type="text" class="inpt" name="telephone">
                         </div>
                     </div>
                     <div class="has-text-centered">
@@ -159,9 +159,46 @@
                 <br><br><br>
                 <p class="is-size-4 has-text-warning has-text-weight-bold ml-4">8 499 391-84-49</p>
                 <br>
-                <button class="button is-rounded is-light has-text-weight-bold ml-4 ">
+                <a class="button is-rounded is-light has-text-weight-bold ml-4 js-modal-trigger"
+                   data-target="modal-js-example">
                     Заказать звонок
-                </button>
+                </a>
+            </div>
+            <div id="modal-js-example" class="modal">
+                <div class="modal-background"></div>
+                <div class="modal-content is-fullwidth">
+                    <div class="box">
+                        <form method="get" class="form" action="{% url 'store:get_contact_url' %}">
+                            <h1 class="title has-text-centered has-text-weight-normal">Заказать обратный звонок</h1>
+                            <div class="field has-text-centered">
+                                <label class="label has-text-weight-medium">Имя</label>
+                                <div class="control">
+                                    <input type="text" class="inpt" name="name">
+                                </div>
+                            </div>
+                            <div class="field has-text-centered">
+                                <label class="label has-text-weight-medium">E-mail</label>
+                                <div class="control">
+                                    <input type="text" class="inpt" name="email">
+                                </div>
+                            </div>
+                            <div class="field has-text-centered">
+                                <label class="label has-text-weight-medium">Телефон</label>
+                                <div class="control">
+                                    <input type="text" class="inpt" name="telephone">
+                                </div>
+                            </div>
+                            <div class="has-text-centered">
+                                <button class="btn_submit_form is-centered">Отправить</button>
+                            </div>
+                            {% if is_succes %}
+                                <h1 class="title">Отлично! Мы скоро вам перезвоним.</h1>
+                                <a href="{% url 'store:home' %}" class="btn__centered">Закрыть</a>
+                            {% endif %}
+                        </form>
+                    </div>
+                </div>
+                <button class="modal-close is-large" aria-label="close"></button>
             </div>
         </footer>
     </div>

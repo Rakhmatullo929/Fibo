@@ -311,7 +311,7 @@ body {
     background: #F7D22D !important;
 }
 
-.btn_hover{
+.btn_hover {
     color: #F7D22D;
     background-color: white;
     border-radius: 6px;
@@ -321,7 +321,7 @@ body {
 }
 
 
-.btn_hover:hover{
+.btn_hover:hover {
     color: white;
     background-color: #F7D22D;
 }
@@ -343,18 +343,16 @@ body {
     font-size: 1em;
 }
 
-.padding{
+.padding {
     padding-top: 9rem;
 }
 
 
-
-
-.fsd{
+.fsd {
     border-radius: 12px;
 }
 
-.btn_submit_form{
+.btn_submit_form {
     padding: 1rem 4rem;
     background-color: white;
     color: #F7D22D;
@@ -364,10 +362,24 @@ body {
 }
 
 
-.btn_submit_form:hover{
+.btn_submit_form:hover {
     background-color: #F7D22D;
     color: white;
 }
+
+.modal-background {
+    background: linear-gradient(0deg, rgba(247, 210, 45, 0.4), rgba(247, 210, 45, 0.4)), rgba(33, 49, 52, 0.2);
+}
+
+.heigh{
+    height: 100%;
+}
+
+.pad{
+    padding-left: 8rem;
+}
+
+
 /*=========================*/
 
 
