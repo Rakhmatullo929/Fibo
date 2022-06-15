@@ -2,6 +2,7 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm, PasswordChangeForm
 from django.contrib.auth.models import User
 from store.models import Feedback
+from .models import Order
 
 
 class SignUpForm(UserCreationForm):
@@ -50,3 +51,14 @@ class FeedbackForms(forms.ModelForm):
     class Meta:
         model = Feedback
         fields = {'client_name', 'client_email', 'client_number'}
+
+
+class OrderForm(forms.Form):
+    name = forms.CharField(widget=forms.TextInput(attrs={'class': 'input'}), label='Имя')
+    e_mail = forms.CharField(widget=forms.TextInput(attrs={'class': 'input'}), label='Адрес доставки')
+    phone = forms.CharField(widget=forms.TextInput(attrs={'class': 'input'}), label='Телефон')
+
+
+    class Meta:
+        model = Order
+        fields = ['name', 'phone', 'address', 'country', 'city', 'street', 'house', 'flat']

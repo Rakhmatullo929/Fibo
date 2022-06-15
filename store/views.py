@@ -65,3 +65,37 @@ def get_contact(request):
         client_number=telephone
     )
     return redirect('store:home')
+
+
+def create_order(request):
+    cart_items = CartItem.objects.all()
+    total_price = sum([item.total_price() for item in cart_items])
+    amount = sum([item.quantity for item in cart_items])
+    form = forms.OrderForm(request.POST)
+
+    if request.method == 'POST' and form.is_valid():
+        order = Order.objects.create(
+            name=request.POST.get('name'),
+            e_mail=request.POST.get('Adress'),
+            phone=request.POST.get('phone'),
+            total_price=total_price,
+        )
+        for cart_item in cart_items:
+            OrderProduct.objects.create(
+                order=order,
+                product=cart_item.product,
+                amount=cart_item.quantity,
+                total=cart_item.total_price(),
+            )
+        return redirect('store:success')
+    form = forms.OrderForm()
+    return render(request, 'create_order.html', {
+        'cart_items': cart_items,
+        'total_price': total_price,
+        'amount': amount,
+        'form': form
+    })
+
+
+def order_success(request):
+    return render(request, 'order_success.html')

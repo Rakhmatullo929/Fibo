@@ -1,2 +1,32 @@
 {% extends 'base_layout.html' %}
 {% load static %}
+
+
+{% block content %}
+    <div class="section is-medium">
+        <div class="container_nav2">
+            <h1 class="title textcolor">Корзина</h1>
+            {#Rectangle#}
+            <div class="rectangle is-flex"></div>
+            <br><br>
+            <div class="columns is-justify-content-center">
+                {% for cart in products %}
+                    <div class="column is-3">
+                        <img src="{{ product.image.url }}" alt="">
+                        <h2 class="title has-text-weight-bold">{{ product.title }}</h2>
+                        <p class="subtitle is-6 mt-0">{{ product.description }}</p>
+                        <div class="columns is-vcentered is-justify-content-space-between">
+                            <h1 class="ml-4 is-size-4 has-text-weight-bold">от {{ product.price }} ₽</h1>
+                            <a href="{% url 'store:home' %}"
+                               class="button is-rounded is-warning has-text-weight-bold mr-3">В корзину
+                            </a>
+                        </div>
+
+
+                    </div>
+                {% endfor %}
+            </div>
+
+        </div>
+    </div>
+{% endblock %}

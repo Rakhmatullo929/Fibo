@@ -28,13 +28,13 @@ body {
 }
 
 .input {
-    max-width: 30% !important;
+    max-width: 100% !important;
     font-family: 'Montserrat', sans-serif;
 }
 
 .btn_color {
     border-radius: 8px !important;
-    width: 100px !important;
+    width: 200px !important;
     height: 42px !important;
     border: none !important;
     font-size: 16px !important;
@@ -60,6 +60,14 @@ body {
     background: #F7D22D;
     border-radius: 6px;
 }
+
+.btn2 {
+    padding: 0.75rem 2.5rem;
+    color: white;
+    background: #F7D22D;
+    border-radius: 6px;
+}
+
 
 .btn_sign_out {
     padding: 1.1rem 4rem;
@@ -346,7 +354,9 @@ body {
 .padding {
     padding-top: 9rem;
 }
-
+.pading{
+    max-width: 1050px !important;
+}
 
 .fsd {
     border-radius: 12px;
@@ -368,14 +378,14 @@ body {
 }
 
 .modal-background {
-    background: linear-gradient(0deg, rgba(247, 210, 45, 0.4), rgba(247, 210, 45, 0.4)), rgba(33, 49, 52, 0.2);
+    background: linear-gradient(0deg, rgba(247, 210, 45, 0.4), rgba(247, 210, 45, 0.58)), rgba(33, 49, 52, 0.2);
 }
 
-.heigh{
+.heigh {
     height: 100%;
 }
 
-.pad{
+.pad {
     padding-left: 8rem;
 }
 
@@ -448,3 +458,39 @@ body {
 /*.phonenumber {*/
 /*    top: -1vh;*/
 /*}*/
+
+
+.order_row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.row_1 {
+    height: 800px;
+    width: 30%;
+    margin-left: -11rem;
+}
+
+.row_2 {
+    margin-left: 15rem;
+}
+
+.rigthbutton {
+    position: relative;
+    top: -50px;
+    right: -350px;
+}
+
+.rectangle {
+    display: flex;
+    position: absolute;
+    width: 70%;
+    height: 1px;
+    left: 2%;
+    top: 5rem;
+
+    background: #ECECF1;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+    border-radius: 10px;
+}

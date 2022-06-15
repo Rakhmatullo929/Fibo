@@ -74,3 +74,23 @@ class Feedback(models.Model):
 
     def __str__(self):
         return F'{self.client_name} {self.client_email} {self.client_number}'
+
+
+class Order(models.Model):
+    name = models.CharField(max_length=255, null=True)
+    phone = models.CharField(max_length=13, null=True)
+    street = models.CharField(max_length=50, null=True)
+    total_price = models.IntegerField()
+
+    def str(self):
+        return 'Order # %s' % (str(self.id))
+
+
+class OrderProduct(models.Model):
+    order = models.ForeignKey('store.Order', on_delete=models.CASCADE, related_name='order_products')
+    product = models.ForeignKey('store.Product', on_delete=models.CASCADE)
+    amount = models.IntegerField()
+    total = models.IntegerField()
+
+    def str(self):
+        return '%s x%s - %s' % (self.product, self.amount, self.order)
