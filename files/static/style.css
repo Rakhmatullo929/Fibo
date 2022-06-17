@@ -124,6 +124,10 @@ body {
     position: relative;
 }
 
+.container_nav2 {
+    padding-left: 10rem;
+}
+
 .mapsrounded2 {
     border-radius: 10px !important;
 }
@@ -329,6 +333,16 @@ body {
 }
 
 
+.btn_hover2 {
+    color: #F7D22D;
+    background-color: white;
+    border-radius: 6px;
+    border: 1px solid;
+    transition: 1s;
+    padding: 1.1rem 4rem;
+}
+
+
 .btn_hover:hover {
     color: white;
     background-color: #F7D22D;
@@ -354,9 +368,11 @@ body {
 .padding {
     padding-top: 9rem;
 }
-.pading{
-    max-width: 1050px !important;
+
+.pading {
+    padding: 8rem !important;
 }
+
 
 .fsd {
     border-radius: 12px;
@@ -493,4 +509,118 @@ body {
     background: #ECECF1;
     box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
     border-radius: 10px;
+}
+
+.succes_obj {
+    height: 40rem !important;
+    width: 20rem !important;
+    left: 80px;
+    top: -240px;
+}
+
+.radio_select {
+    display: flex;
+    margin-right: 10px;
+}
+
+.radio_select input[type=radio] {
+    display: none;
+}
+
+.radio_select label {
+    display: inline-block;
+    cursor: pointer;
+    padding: 0 1rem;
+    margin-right: 1rem;
+    line-height: 34px;
+    border: 1px solid #F7D22D;
+    border-radius: 6px;
+}
+
+.radio_select input[type=radio]:checked + label {
+    background: #F7D22D;
+}
+
+/* Hover */
+.radio_select label:hover {
+    color: white;
+    background-color: #F7D22D;
+}
+
+
+/* Disabled */
+.radio_select input[type=radio]:disabled + label {
+    background: #efefef;
+}
+
+.radio_select {
+    display: flex;
+    margin-right: 10px;
+}
+
+.radio_select input[type=radio] {
+    display: none;
+}
+
+
+
+
+
+.radio_selects {
+    display: flex;
+    margin-right: 10px;
+}
+
+.radio_selects input[type=radio] {
+    display: none;
+}
+
+.radio_selects label {
+    display: inline-block;
+    cursor: pointer;
+    padding: 0 1rem;
+    margin-right: 1rem;
+    line-height: 34px;
+    border: 1px solid #F7D22D;
+    border-radius: 6px;
+}
+
+.radio_selects input[type=radio]:checked + label {
+    background: #F7D22D;
+}
+
+/* Hover */
+.radio_selects label:hover {
+    color: white;
+    background-color: #F7D22D;
+}
+
+
+/* Disabled */
+.radio_selects input[type=radio]:disabled + label {
+    background: #efefef;
+}
+
+.radio_selects {
+    display: flex;
+    margin-right: 10px;
+}
+
+.radio_selects input[type=radio] {
+    display: none;
+}
+
+
+
+
+
+
+.b-black {
+    background-color: #F7D22D;
+    color: white;
+}
+
+.bb_black {
+    background-color: #F7D22D;
+    color: white;
 }

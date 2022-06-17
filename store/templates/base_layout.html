@@ -259,5 +259,26 @@
         });
     });
 </script>
+<script>
+    let radio_selects = document.querySelectorAll(".radio_selects label",)
+
+    radio_selects.forEach(button => {
+        button.addEventListener('click', () => {
+            radio_selects.forEach(elem => elem.classList.remove('b-black'))
+            button.classList.add('b-black')
+        })
+    })
+
+    let radio_select = document.querySelectorAll(".radio_select label",)
+
+    radio_select.forEach(button => {
+        button.addEventListener('click', () => {
+            radio_select.forEach(elem => elem.classList.remove('bb_black'))
+            button.classList.add('bb_black')
+        })
+    })
+
+
+</script>
 </body>
 </html>

@@ -1,10 +1,62 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends 'base_layout.html' %}
+{% load static %}
+
+
+{% block content %}<br><br><br><br><br><br><br>
+    <div class="product_detail_title">
+        <h1 class="title is-1 container_nav ">{{ product.title }}</h1>
+    </div>
+    <div class="container p_p">
+        <p class="subtitle is-6 mt-3 container_nav">Главная - {{ product.category }} - <span
+                class="has-text-grey-light">{{ product.title }}</span></p>
+    </div>
+    <div class="section container_nav">
+        <div class="container product-detail">
+            <div class="columns is-flex is-align-items-center">
+                <div class="column">
+                    <figure class="is-4by5 image product-detail-image">
+                        <img src="{{ product.image.url }}" alt="Placeholder image">
+                    </figure>
+                </div>
+
+                <div class="column">
+                    <div class="content" style="font-family: 'Montserrat', sans-serif;">
+                        <p class="title is-size-3">${{ product.price }}</p><br><br>
+                        <form action="{% url 'store:product_detail' product.pk %}" method="POST"
+                                {#                              enctype="multipart/form-data"#}
+                              style="padding-left: 1rem">
+                            {% csrf_token %}
+                            {% for field in form_rating %}
+                                {% if field.name == 'rate' %}
+                                    <div class="columns">
+                                        <div class="column">
+                                            <label for="{{ field.id_for_label }}"
+                                                   class=title>{{ field.label }}</label>
+                                            {{ field }}
+                                        </div>
+                                    </div>
+                                {% else %}
+                                    <div class="columns">
+                                        <div class="column ">
+                                            <label for="{{ field.id_for_label }}" class="title">
+                                                {{ field.label }}
+                                            </label><br>
+                                            <div class="fields">
+                                                {{ field }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
+                            <button type="submit" style="border: none"
+                                    {#                                                                   href="{% url 'store:product_detail' product.pk %}?product={{ product.id }}"#}
+                                    class="button s_dd has-text-black is-fullwidth">Добавить в корзину
+                            </button>
+                        </form>
+                        <br>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 
 # Create your views here.
+from .forms import RateForm
 from .models import *
 from django.contrib.auth.decorators import login_required
 from . import forms
@@ -99,3 +100,26 @@ def create_order(request):
 
 def order_success(request):
     return render(request, 'order_success.html')
+
+
+def product_detail(request, pk):
+    product = Product.objects.get(pk=pk)
+    cart_item = CartItem.objects.filter(customer=request.user, product=product)
+    form_rating = RateForm(request.POST or None)
+    if not cart_item and request.method == 'POST' and form_rating.is_valid():
+        form_rating = CartItem.objects.create(
+            product=product,
+            quantity=1,
+            size=request.POST.get('size'),
+            thickness=request.POST.get('thickness'),
+        )
+        form_rating.save()
+        return redirect('store:home')
+    for item in cart_item:
+        item.quantity += 1
+        item.save()
+    form_rating = RateForm()
+    return render(request, 'product_detail.html',
+                  {'product': product,
+                   'form_rating': form_rating, }
+                  )

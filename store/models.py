@@ -46,16 +46,32 @@ class Slide(models.Model):
     image = models.ImageField(default='slide.jpg')
 
 
+SIZE_CHOICES = [
+    ('Маленькая', 'Маленькая'),
+    ('Средняя', 'Средняя'),
+    ('Большая', 'Большая')
+]
+
+THICKNESS_CHOICES = [
+    ('Традиционное', 'Традиционное'),
+    ('Тонкое', 'Тонкое'),
+]
+
+
 class CartItem(models.Model):
     customer = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
-    quantity = models.PositiveIntegerField()
+    quantity = models.IntegerField()
+    size = models.CharField(choices=SIZE_CHOICES, max_length=30, null=True)
+    thickness = models.PositiveIntegerField(choices=THICKNESS_CHOICES, null=True)
 
-    def __str__(self):
-        return self.product.title
 
-    def total_price(self):
-        return self.product.price * self.quantity
+def __str__(self):
+    return self.product.title
+
+
+def total_price(self):
+    return self.product.price * self.quantity
 
 
 class Sale(models.Model):
