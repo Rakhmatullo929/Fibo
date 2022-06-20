@@ -21,9 +21,9 @@ class FeedbackForms(forms.ModelForm):
 
 class OrderForm(forms.Form):
     name = forms.CharField(widget=forms.TextInput(attrs={'class': 'input'}), label='Имя')
-    e_mail = forms.CharField(widget=forms.TextInput(attrs={'class': 'input'}), label='Адрес доставки')
+    address = forms.CharField(widget=forms.TextInput(attrs={'class': 'input'}), label='Адрес доставки')
     phone = forms.CharField(widget=forms.TextInput(attrs={'class': 'input'}), label='Телефон')
 
     class Meta:
         model = Order
-        fields = ['name', 'phone', 'address', 'country', 'city', 'street', 'house', 'flat']
+        fields = ['name', 'address', 'phone']

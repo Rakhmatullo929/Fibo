@@ -3,7 +3,7 @@
 
 
 {% block content %}
-    <section class="section is-medium container_nav2">
+    <section class="section is-medium container_nav3">
         <div class="pading p-5">
             <div class="content">
                 <h1 class="title textcolor">Корзина</h1>
@@ -32,28 +32,34 @@
 
                                     </div>
                                 </td>
-                                <td class="is-vcentered">
-                                    <div class="level-item">{{ item }}</div>
+                                <td class="has-text-left ">
+                                    <h1 class="title ml-6 pt-4  has-text-weight-bold is-size-5">{{ item.product.title }}</h1>
+                                    <p class="subtitle desc  is-size-6 ml-6">{{ item.product.description }}</p>
                                 </td>
                                 <td class="has-text-weight-medium is-vcentered textcolor is-size-3 has-text-weight-bold">
-                                    ${{ item.product.price }}</td>
+                                    {{ item.product.price }}₽</td>
                                 <td class="is-vcentered">
-                                    <a href="{% url 'store:edit_cart_item' item.id %}?action=add">
-                                        <h1 class="title item_color">+</h1>
-                                    </a>
-                                    {{ item.quantity }}
-                                    <a href="{% url 'store:edit_cart_item' item.id %}?action=take">
-                                        <h1 class="title">-</h1>
-                                    </a>
+                                    <div class="level qwer">
+                                        <div class="level-item is-rounded has-text-warning">
+                                            <a href="{% url 'store:edit_cart_item' item.id %}?action=take">
+                                                <h1 class="title has-text-grey is-size-5 mx-1">-</h1>
+                                            </a>
+                                        </div>
+                                        <div class="level-item has-text-weight-bold has-text-grey is-size-4 mx-4">{{ item.quantity }}</div>
+                                        <div class="level-item">
+                                            <a href="{% url 'store:edit_cart_item' item.id %}?action=add">
+                                                <h1 class="title has-text-grey is-size-5">+</h1>
+                                            </a>
+                                        </div>
+                                    </div>
                                 </td>
-                                <td class="has-text-weight-medium is-vcentered textcolor">
+                                <td class="is-vcentered textcolor">
                                     <a href="{% url 'store:delete_cart_item' item.pk %}">
-                                        <img src="{% static 'uploads/Close.svg' %}" alt="">
+                                        <img src="{% static 'uploads/Close.svg' %}" class="close_img" alt="">
                                     </a>
                                 </td>
                             </tr>
                         {% endfor %}
-
                         </tbody>
                     </table>
                 {% endif %}
@@ -64,17 +70,18 @@
                 <hr>
                 <div class="columns has-text-centered">
                     <div class="column">
-                    </div>
-                    <div class="column">
                         <div class="columns is-centered is-vcentered">
                             <div class="column">
-                                <div class="notification has-background-warning-light">
-                                    <p>Итого: <span class="mx-6">${{ total_price }}</span></p>
-                                </div>
+
                             </div>
-                            <div class="column">
+                            <div class="column is-5">
+                                <div class="has-text-grey">
+                                    <p class="has-text-weight-bold has-text-black">Сумма заказа:
+                                        <span class="is-size-2 textcolor">{{ total_price }}₽</span></p>
+                                </div>
+                                <br>
                                 {% if cart_items %}
-                                    <a href="{% url 'store:create_order' %}" class="button s_dd">
+                                    <a href="{% url 'store:create_order' %}" class="button btn_desc">
                                         Оформить заказ
                                     </a>
                                 {% endif %}

@@ -534,7 +534,7 @@ body {
 .rigthbutton {
     position: relative;
     top: -50px;
-    right: -350px;
+    right: -300px;
 }
 
 .rectangle {
@@ -549,6 +549,37 @@ body {
     box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
     border-radius: 10px;
 }
+
+.close_img {
+    max-width: 250px;
+}
+
+.qwer {
+    background: #F3F3F7;
+    border-radius: 8px;
+    padding: 0.5rem 1.5rem;
+}
+
+.container_nav3 {
+    width: 75%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+    position: relative;
+}
+
+.btn_desc {
+    padding: 2rem 4rem !important;
+    background-color: #F7D22D !important;
+}
+
+.rigthbutton {
+    position: relative;
+    top: -50px;
+    right: -300px;
+}
+
 
 .succes_obj {
     height: 40rem !important;

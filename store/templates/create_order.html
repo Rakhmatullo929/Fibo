@@ -24,33 +24,30 @@
                                 </div>
                             </div>
                         {% endfor %}<br>
-                        <a href="{% url 'store:cart' %}" class="has-text-grey-light">Назад в корзину</a>
+                        <a href="{% url 'store:cart' %}" class="has-text-grey-light">< Назад в корзину</a>
                         <div class="rigthbutton"><br>
-                            <a href="{% url 'store:order_success' %}" class=" btn2 has-text-weight-bold ">Оформить заказ на {{ total_price }} ₽</a>
+                            <a href="{% url 'store:order_success' %}" class=" btn2 has-text-weight-bold ">Оформить заказ
+                                на {{ total_price }} ₽</a>
                         </div>
                     </form>
                 </div>
                 <div class="row_2">
                     <div class="box">
                         <div class="title textcolor is-size-5">Состов заказа</div>
-                        <table class="table  has-text-weight-medium is-fullwidth">
+                        <table class="table is-fullwidth">
                             <tbody>
                             {% for item in cart_items %}
-                                <tr>
+                                <tr class="has-text-weight-medium">
                                     <td>{{ item }}</td>
-                                    <td>${{ item.product.price }}</td>
-                                </tr>
-                                <tr>
                                     <td>x {{ item.quantity }}</td>
-                                    <td>${{ item.total_price }}</td>
+                                    <td>{{ item.total_price }}₽</td>
                                 </tr>
                             {% endfor %}
                             </tbody>
                         </table>
 
-                        <div class="is-2 has-text-weight-bold pading">Сумма заказа:
-                            <span
-                                    class="title is-4" style="padding-left: 4rem"> {{ total_price }} ₽ </span></div>
+                        <div class="is-2 has-text-weight-bold has-text-centered">Сумма заказа:
+                            <span class="title is-4 textcolor" style="padding-left: 4rem"> {{ total_price }} ₽ </span></div>
                         <br>
                         <p class="has-text-centered ">Беспалтная доставка</p>
                     </div>
