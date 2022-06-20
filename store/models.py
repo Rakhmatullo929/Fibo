@@ -53,8 +53,8 @@ SIZE_CHOICES = [
 ]
 
 THICKNESS_CHOICES = [
-    ('Традиционное', 'Традиционное'),
-    ('Тонкое', 'Тонкое'),
+    (1, 'Традиционное'),
+    (2, 'Тонкое'),
 ]
 
 
@@ -65,13 +65,11 @@ class CartItem(models.Model):
     size = models.CharField(choices=SIZE_CHOICES, max_length=30, null=True)
     thickness = models.PositiveIntegerField(choices=THICKNESS_CHOICES, null=True)
 
+    def __str__(self):
+        return self.product.title
 
-def __str__(self):
-    return self.product.title
-
-
-def total_price(self):
-    return self.product.price * self.quantity
+    def total_price(self):
+        return self.product.price * self.quantity
 
 
 class Sale(models.Model):

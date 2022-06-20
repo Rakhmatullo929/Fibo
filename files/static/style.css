@@ -333,16 +333,6 @@ body {
 }
 
 
-.btn_hover2 {
-    color: #F7D22D;
-    background-color: white;
-    border-radius: 6px;
-    border: 1px solid;
-    transition: 1s;
-    padding: 1.1rem 4rem;
-}
-
-
 .btn_hover:hover {
     color: white;
     background-color: #F7D22D;
@@ -403,6 +393,55 @@ body {
 
 .pad {
     padding-left: 8rem;
+}
+
+.backs {
+    background-color: #F7D22D;
+    font-family: 'Montserrat', sans-serif !important;
+
+}
+
+.agds {
+    padding-left: 8rem;
+    padding-right: 7rem;
+}
+
+
+.btn-hover {
+    width: 200px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff;
+    cursor: pointer;
+    margin: 20px;
+    height: 55px;
+    text-align: center;
+    border: none;
+    background-size: 300% 100%;
+
+    border-radius: 50px;
+    moz-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+}
+
+.btn-hover:hover {
+    background-position: 100% 0;
+    moz-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+}
+
+.btn-hover:focus {
+    outline: none;
+}
+
+
+.btn-hover.color-7 {
+    background-image: linear-gradient(to right, #F7D22D, #d8de0d, #4cfd0f, #0ef682);
+    box-shadow: 0 4px 15px 0 rgba(247, 210, 45, 0.58);
 }
 
 
@@ -563,9 +602,6 @@ body {
 }
 
 
-
-
-
 .radio_selects {
     display: flex;
     margin-right: 10px;
@@ -609,10 +645,6 @@ body {
 .radio_selects input[type=radio] {
     display: none;
 }
-
-
-
-
 
 
 .b-black {

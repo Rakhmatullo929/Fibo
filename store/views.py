@@ -31,7 +31,7 @@ def home(request):
 
 
 def contact(request):
-    contact = Product.objects.all
+    contact = Product.objects.all()
     return render(request, 'contact.html', {'contact': contact})
 
 
@@ -45,6 +45,28 @@ def cart(request):
                    'total_quantity': total_quantity,
                    'total_price': total_price},
                   )
+
+
+def delete_cart_item(request, pk):
+    cart_item = CartItem.objects.get(pk=pk)
+    cart_item.delete()
+    return redirect('store:cart')
+
+
+def edit_cart_item(request, pk):
+    cart_item = CartItem.objects.get(pk=pk)
+    action = request.GET.get('action')
+
+    if action == 'take' and cart_item.quantity > 0:
+        if cart_item.quantity == 1:
+            cart_item.delete()
+            return redirect('store:cart')
+        cart_item.quantity -= 1
+        cart_item.save()
+        return redirect('store:cart')
+    cart_item.quantity += 1
+    cart_item.save()
+    return redirect('store:cart')
 
 
 def sales(request):
@@ -103,11 +125,14 @@ def order_success(request):
 
 
 def product_detail(request, pk):
+    print(request.POST.get('store'))
     product = Product.objects.get(pk=pk)
     cart_item = CartItem.objects.filter(customer=request.user, product=product)
     form_rating = RateForm(request.POST or None)
+    print(form_rating)
     if not cart_item and request.method == 'POST' and form_rating.is_valid():
         form_rating = CartItem.objects.create(
+            customer=request.user,
             product=product,
             quantity=1,
             size=request.POST.get('size'),

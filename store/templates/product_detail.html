@@ -2,61 +2,70 @@
 {% load static %}
 
 
-{% block content %}<br><br><br><br><br><br><br>
-    <div class="product_detail_title">
-        <h1 class="title is-1 container_nav ">{{ product.title }}</h1>
-    </div>
-    <div class="container p_p">
-        <p class="subtitle is-6 mt-3 container_nav">Главная - {{ product.category }} - <span
-                class="has-text-grey-light">{{ product.title }}</span></p>
-    </div>
-    <div class="section container_nav">
-        <div class="container product-detail">
-            <div class="columns is-flex is-align-items-center">
-                <div class="column">
-                    <figure class="is-4by5 image product-detail-image">
-                        <img src="{{ product.image.url }}" alt="Placeholder image">
-                    </figure>
+{% block content %}<br><br><br><br>
+    <section class="section pb-3 backs"><br><br>
+        <div class="container agds">
+            <div class="box ">
+                <div class="product_detail_title">
+                    <h1 class="title is-1 container_nav ">{{ product.title }}</h1>
                 </div>
+                <div class="container p_p">
+                    <p class="subtitle is-6 mr-7 pad "> {{ product.category }} - <span
+                            class="has-text-grey-light">{{ product.title }}</span></p>
+                </div>
+                <div class="section container_nav">
+                    <div class="container product-detail">
+                        <div class="columns is-flex is-align-items-center">
+                            <div class="column">
+                                <figure class="is-1by1 image product-detail-image">
+                                    <img src="{{ product.image.url }}" alt="Placeholder image">
+                                </figure>
+                            </div>
+                            <div class="column">
+                                <div class="content" style="font-family: 'Montserrat', sans-serif;">
+                                    <p class="title is-size-3 mx-3">${{ product.price }}</p><br><br>
+                                    <p class="subtitle mx-3">{{ product.description }}</p>
+                                    <form action="{% url 'store:product_detail' product.pk %}" method="POST"
+                                            {#                              enctype="multipart/form-data"#}
+                                          style="padding-left: 1rem">
+                                        {% csrf_token %}
+                                        {% if product.category.pk == 3 or product.category.pk == 1 %}
 
-                <div class="column">
-                    <div class="content" style="font-family: 'Montserrat', sans-serif;">
-                        <p class="title is-size-3">${{ product.price }}</p><br><br>
-                        <form action="{% url 'store:product_detail' product.pk %}" method="POST"
-                                {#                              enctype="multipart/form-data"#}
-                              style="padding-left: 1rem">
-                            {% csrf_token %}
-                            {% for field in form_rating %}
-                                {% if field.name == 'rate' %}
-                                    <div class="columns">
-                                        <div class="column">
-                                            <label for="{{ field.id_for_label }}"
-                                                   class=title>{{ field.label }}</label>
-                                            {{ field }}
-                                        </div>
-                                    </div>
-                                {% else %}
-                                    <div class="columns">
-                                        <div class="column ">
-                                            <label for="{{ field.id_for_label }}" class="title">
-                                                {{ field.label }}
-                                            </label><br>
-                                            <div class="fields">
-                                                {{ field }}
-                                            </div>
-                                        </div>
-                                    </div>
-                                {% endif %}
-                            {% endfor %}
-                            <button type="submit" style="border: none"
-                                    {#                                                                   href="{% url 'store:product_detail' product.pk %}?product={{ product.id }}"#}
-                                    class="button s_dd has-text-black is-fullwidth">Добавить в корзину
-                            </button>
-                        </form>
-                        <br>
+                                            {% for field in form_rating %}
+                                                {% if field.name == 'rate' %}
+                                                    <div class="columns">
+                                                        <div class="column">
+                                                            {{ field }}
+                                                        </div>
+                                                    </div>
+                                                {% else %}
+                                                    <div class="columns">
+                                                        <div class="column ">
+
+                                                            <div class="fields">
+                                                                {{ field }}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                {% endif %}
+                                            {% endfor %}
+                                        {% endif %}
+                                        <button
+                                                type="submit"
+                                                style="border: none"
+                                                class="btn-hover color-7">
+                                            <span class="add-to-cart">Добавить в корзину</span>
+                                            <i class="fa-solid fa-cart-shopping"></i>
+                                        </button>
+                                    </form>
+                                    <br>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
+            <br><br><br>
         </div>
-    </div>
+    </section>
 {% endblock %}

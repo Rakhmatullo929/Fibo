@@ -2,9 +2,11 @@ from django import forms
 from .models import CartItem, SIZE_CHOICES, THICKNESS_CHOICES
 from store.models import Feedback, Order
 
+
 class RateForm(forms.ModelForm):
-    size = forms.ChoiceField(choices=SIZE_CHOICES, widget=forms.RadioSelect(attrs={'class': 'radio_select '}),)
-    thickness = forms.ChoiceField(choices=THICKNESS_CHOICES, widget=forms.RadioSelect(attrs={'class': 'radio_selects'}),)
+    size = forms.ChoiceField(choices=SIZE_CHOICES, widget=forms.RadioSelect(attrs={'class': 'radio_select '}), )
+    thickness = forms.ChoiceField(choices=THICKNESS_CHOICES,
+                                  widget=forms.RadioSelect(attrs={'class': 'radio_selects'}), )
 
     class Meta:
         model = CartItem
