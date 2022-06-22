@@ -18,6 +18,9 @@ class Product(models.Model):
     def __str__(self):
         return f'{self.title}, {self.price}'
 
+    def desk(self):
+        return f'{self.description[:30]}'
+
     class Meta:
         db_table = 'store_product'
 
@@ -62,8 +65,8 @@ class CartItem(models.Model):
     customer = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     quantity = models.IntegerField()
-    size = models.CharField(choices=SIZE_CHOICES, max_length=30, null=True)
-    thickness = models.PositiveIntegerField(choices=THICKNESS_CHOICES, null=True)
+    size = models.CharField(choices=SIZE_CHOICES, max_length=30, null=True, blank=True)
+    thickness = models.PositiveIntegerField(choices=THICKNESS_CHOICES, null=True, blank=True)
 
     def __str__(self):
         return self.product.title

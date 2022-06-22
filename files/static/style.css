@@ -387,10 +387,6 @@ body {
     background: linear-gradient(0deg, rgba(247, 210, 45, 0.4), rgba(247, 210, 45, 0.58)), rgba(33, 49, 52, 0.2);
 }
 
-.heigh {
-    height: 100%;
-}
-
 .pad {
     padding-left: 8rem;
 }
@@ -443,6 +439,8 @@ body {
     background-image: linear-gradient(to right, #F7D22D, #d8de0d, #4cfd0f, #0ef682);
     box-shadow: 0 4px 15px 0 rgba(247, 210, 45, 0.58);
 }
+
+
 
 
 /*=========================*/

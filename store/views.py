@@ -96,7 +96,10 @@ def create_order(request):
     amount = sum([item.quantity for item in cart_items])
     form = forms.OrderForm(request.POST)
 
+    print(request.method)
+
     if request.method == 'POST' and form.is_valid():
+        print('if')
         order = Order.objects.create(
             name=request.POST.get('name'),
             e_mail=request.POST.get('Adress'),
@@ -104,12 +107,15 @@ def create_order(request):
             total_price=total_price,
         )
         for cart_item in cart_items:
+            print('for')
             OrderProduct.objects.create(
                 order=order,
                 product=cart_item.product,
                 amount=cart_item.quantity,
                 total=cart_item.total_price(),
             )
+            OrderProduct.save()
+        order.save()
         return redirect('store:success')
     form = forms.OrderForm()
     return render(request, 'create_order.html', {
@@ -125,12 +131,9 @@ def order_success(request):
 
 
 def product_detail(request, pk):
-    print(request.POST.get('store'))
     product = Product.objects.get(pk=pk)
     cart_item = CartItem.objects.filter(customer=request.user, product=product)
-    form_rating = RateForm(request.POST or None)
-    print(form_rating)
-    if not cart_item and request.method == 'POST' and form_rating.is_valid():
+    if not cart_item and request.method == 'POST':
         form_rating = CartItem.objects.create(
             customer=request.user,
             product=product,
@@ -140,9 +143,16 @@ def product_detail(request, pk):
         )
         form_rating.save()
         return redirect('store:home')
-    for item in cart_item:
-        item.quantity += 1
-        item.save()
+    if cart_item and request.method == 'POST':
+        quantity = 0
+        for item in cart_item:
+            quantity = item.quantity + 1
+        CartItem.objects.update(
+            quantity=quantity,
+            size=request.POST.get('size'),
+            thickness=request.POST.get('thickness'),
+        )
+        return redirect('store:home')
     form_rating = RateForm()
     return render(request, 'product_detail.html',
                   {'product': product,

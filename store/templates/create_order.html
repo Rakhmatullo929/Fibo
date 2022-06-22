@@ -7,7 +7,7 @@
         <div class="container">
             <div class="order_row">
                 <div class="row_1">
-                    <form method="post" action="{% url 'store:create_order' %}" enctype="multipart/form-data">
+                    <form enctype="multipart/form-data" method="POST" action="{% url 'store:create_order' %}">
                         {% csrf_token %}
                         <div class="title is-3 textcolor">
                             Заказ на доставку
@@ -47,7 +47,8 @@
                         </table>
 
                         <div class="is-2 has-text-weight-bold has-text-centered">Сумма заказа:
-                            <span class="title is-4 textcolor" style="padding-left: 4rem"> {{ total_price }} ₽ </span></div>
+                            <span class="title is-4 textcolor" style="padding-left: 4rem"> {{ total_price }} ₽ </span>
+                        </div>
                         <br>
                         <p class="has-text-centered ">Беспалтная доставка</p>
                     </div>
