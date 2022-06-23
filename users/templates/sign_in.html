@@ -1,29 +1,33 @@
 {% extends 'base_layout.html' %}
 {% load static %}
 {% block auth %}
-    <div class="columns s_dd is-centered is-medium section has-background-warning-light">
-        <div class="column is-4 is-vcentered" style="margin-top: 10%">
-            <div class="box">
+    <section class="section is-medium"></section>
+    <section class="container">
+        <div class="login-container">
+            <div class="circle circle-one"></div>
+            <div class="form-container">
+                <img src="{% static  'uploads/illustration.png' %}" alt="illustration" class="illustration"/>
+                <h1 class="title is-size-2 has-text-left has-text-centered">Sign in</h1>
                 <form class="form  has-text-centered" method="post">
-                    <h1 class="title is-size-2 has-text-centered">Sign In</h1>
                     {% csrf_token %}
                     {% for field in form %}
                         <div class="field">
-                            <label for="{{ field.id_for_label }}" class="label">{{ field.label }}</label>
+                            <label for="{{ field.id_for_label }}" class="label has-text-left">{{ field.label }}</label>
                             {{ field }}
                         </div>
                     {% endfor %}
-                    <button type="submit" class="button s_dd is-fullwidth">
+                    <button type="submit" class="opacity is-fullwidth">
                         Submit
                     </button>
                     <p class="content mt-3">
-                        Don't have an account?
                         <span>
-                           <a class="color_a" href="{% url 'users:sign_up' %}">Sign up here</a>
+                           <a class="register-forget opacity" href="{% url 'users:sign_up' %}">REGISTER</a>
                        </span>
                     </p>
                 </form>
             </div>
+            <div class="circle circle-two"></div>
         </div>
-    </div>
+        <div class="theme-btn-container"></div>
+    </section>
 {% endblock %}

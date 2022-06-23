@@ -1,29 +1,36 @@
 {% extends 'base_layout.html' %}
+{% load static %}
 
 {% block auth %}
-    <div class="columns s_dd is-centered section is-medium has-background-warning-light" style="margin-top: 6%">
-        <div class="column is-4">
-            <div class="box">
-                <form class="form  has-text-centered" method="post">
-                    <h1 class="title is-size-2 has-text-centered">Sign up</h1>
-                    {% csrf_token %}
-                    {% for field in form %}
-                        <div class="field">
-                            <label for="{{ field.id_for_label }}" class="label">{{ field.label }}</label>
-                            {{ field }}
-                        </div>
-                    {% endfor %}
-                    <button type="submit" class="button s_dd is-fullwidth">
-                        Submit
-                    </button>
-                    <p class="content mt-3">
-                        Already have an account?
-                        <span>
+    <section class="section is-centered has-text-centered  is-large">
+        <div class="container f3df">
+            <div class="login-container">
+                <div class="circle circle-one"></div>
+                <div class="form-container">
+                    <img src="{% static  'uploads/illustration.png' %}" alt="illustration" class="illustration"/>
+                    <h1 class="title is-size-2 has-text-left has-text-centered">Sign up</h1>
+                    <form class="form  has-text-centered" method="post">
+                        {% csrf_token %}
+                        {% for field in form %}
+                            <div class="field">
+                                <label for="{{ field.id_for_label }}" class="label">{{ field.label }}</label>
+                                {{ field }}
+                            </div>
+                        {% endfor %}
+                        <button type="submit" class="opacity is-fullwidth">
+                            Submit
+                        </button>
+                        <p class="content mt-3 register-forget opacity">
+                            Already have an account?
+                            <span><br>
                            <a class="color_a" href="{% url 'users:sign_in' %}">Sign in here</a>
                        </span>
-                    </p>
-                </form>
+                        </p>
+                    </form>
+                </div>
+                <div class="circle circle-two"></div>
             </div>
+            <div class="theme-btn-container"></div>
         </div>
-    </div>
+    </section>
 {% endblock %}

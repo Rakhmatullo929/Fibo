@@ -101,22 +101,19 @@ def create_order(request):
     if request.method == 'POST' and form.is_valid():
         print('if')
         order = Order.objects.create(
-            name=request.POST.get('name'),
-            e_mail=request.POST.get('Adress'),
+            customer=request.user,
+            address=request.POST.get('address'),
             phone=request.POST.get('phone'),
             total_price=total_price,
         )
         for cart_item in cart_items:
-            print('for')
             OrderProduct.objects.create(
                 order=order,
                 product=cart_item.product,
                 amount=cart_item.quantity,
                 total=cart_item.total_price(),
             )
-            OrderProduct.save()
-        order.save()
-        return redirect('store:success')
+        return redirect('store:order_success')
     form = forms.OrderForm()
     return render(request, 'create_order.html', {
         'cart_items': cart_items,

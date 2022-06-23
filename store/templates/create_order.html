@@ -26,8 +26,9 @@
                         {% endfor %}<br>
                         <a href="{% url 'store:cart' %}" class="has-text-grey-light">< Назад в корзину</a>
                         <div class="rigthbutton"><br>
-                            <a href="{% url 'store:order_success' %}" class=" btn2 has-text-weight-bold ">Оформить заказ
-                                на {{ total_price }} ₽</a>
+                            <button type="submit" class=" btn2 has-text-weight-bold ">Оформить заказ
+                                на {{ total_price }} ₽
+                            </button>
                         </div>
                     </form>
                 </div>

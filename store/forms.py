@@ -20,7 +20,7 @@ class FeedbackForms(forms.ModelForm):
 
 
 class OrderForm(forms.Form):
-    name = forms.CharField(widget=forms.TextInput(attrs={'class': 'input'}), label='Имя')
+    total_price = forms.CharField(widget=forms.TextInput(attrs={'class': 'input'}), label='Имя')
     address = forms.CharField(widget=forms.TextInput(attrs={'class': 'input'}), label='Адрес доставки')
     phone = forms.CharField(widget=forms.TextInput(attrs={'class': 'input'}), label='Телефон')
 
