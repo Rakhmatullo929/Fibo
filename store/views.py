@@ -99,7 +99,6 @@ def create_order(request):
     print(request.method)
 
     if request.method == 'POST' and form.is_valid():
-        print('if')
         order = Order.objects.create(
             customer=request.user,
             address=request.POST.get('address'),
@@ -113,6 +112,8 @@ def create_order(request):
                 amount=cart_item.quantity,
                 total=cart_item.total_price(),
             )
+
+        cart_items.delete()
         return redirect('store:order_success')
     form = forms.OrderForm()
     return render(request, 'create_order.html', {
